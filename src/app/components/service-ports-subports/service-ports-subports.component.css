@@ -1,0 +1,189 @@
+/*Global*/
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: helvetica, sans-serif;
+}
+
+
+
+/*Arrow*/
+
+.arrow {
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    float: left;
+    z-index: 0;
+    margin: 17px 1em 0 2em;
+}
+.normal{
+    transform: rotate(-90deg);
+    transition: 0.1s;
+}
+.rotated{
+    transform: rotate(0deg);
+    transition: 0.1s;
+}
+
+
+
+/*Styles*/
+
+label:hover {
+    cursor: pointer;
+}
+label {
+    width: 400px;
+    display: block;
+    z-index: 3;
+    position: relative;
+}
+.nav {
+    background-color: white;
+    overflow-x: hidden;
+    width: 300px;
+    left: 100px;
+    top: 100px;
+    position: absolute;
+}
+
+#nav-icon {
+    font-size: 28px;
+    line-height: 50px;
+    padding-left: 1em;
+    color: white;
+    background-color: #F44336;
+}
+
+.nav ul, .nav li, label {
+    line-height: 50px;
+    margin: 0;
+    padding: 0 2em;
+    list-style: none;
+    text-decoration: none;
+    color: #90A4AE;
+    font-weight: 100;
+    width: 400px;
+}
+.item ul .sub-item label {
+    padding: 0 0.1em;
+  background-color: #f1f1f1;
+  width: 400px;
+}
+
+.item ul .sub-item label:hover{
+  background-color: darkslategrey;
+  opacity: 30%;
+  color: #f1f1f1;
+  width: 400px;
+}
+
+.item ul .sub-item .check_hover:hover
+{
+  color: #CFD8DC;
+}
+.item ul .sub-item ul li a{
+  position: relative;
+  left: -100px;
+}
+.item ul .sub-item ul li:hover{
+  cursor: pointer;
+}
+
+.check_hover:hover ~ .no-hover
+{
+  display: block;
+  padding-left: 100px;
+
+}
+
+.no-hover{
+  display: none;
+}
+
+.no-hover:hover{
+  display: block;
+}
+
+.item label{
+  background-color: lightcyan;
+  opacity: 40%;
+  color: black;
+  width: 400px;
+}
+
+.item label:hover{
+  background-color: lightblue;
+}
+
+.nav li a {
+    line-height: 50px;
+    margin: 0;
+    padding: 0 4em;
+    list-style: none;
+    text-decoration: none;
+    color: #90A4AE;
+    font-weight: 100;
+}
+
+.fa:hover{
+  color: #F44336;
+}
+
+h3{
+  left: 450px;
+  top: 200px;
+  position: absolute;
+}
+
+ /* Style the tab */
+.tab {
+  overflow: hidden;
+  background-color: inherit;
+  left: 400px;
+  top: 100px;
+  position: absolute;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  cursor: pointer;
+  height: 50px;
+  width: 170px;
+  background-color: lightblue;
+  color: darkslategrey;
+  float: left;
+  border: none;
+  outline: none;
+  padding: 14px 16px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: lightcyan;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+  display: block;
+}
+
+/* Style the tab content */
+.tabcontent {
+  padding: 6px 12px;
+  border-top: none;
+}
+
+.chosen-tab{
+  background-color: bisque;
+}
+
+
+
+
+
+
+

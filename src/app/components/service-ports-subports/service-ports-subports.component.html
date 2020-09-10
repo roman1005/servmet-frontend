@@ -1,0 +1,58 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="service-ports-subports.component.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+    <div class="tab">
+      <!-- let serv of null getServs() -->
+      <button title="{{serv.service_name}}" *ngFor="let serv of getServices()" class = 'tablinks' [ngStyle]="{'background-color': serv.current ? 'bisque' : null}" (click)="toggleService(serv)">{{tabServiceName(serv)}} <i class="fa fa-window-close" (click)="serv.active = false"></i></button>
+    </div>
+
+    <div *ngFor="let serv of getServices()" id="{{serv.service_name}}">
+        <h3 *ngIf="serv.current === true" [ngStyle]="this.details_class()"> {{serv.service_name}}</h3>
+    </div>
+    <div class="nav">
+        <!-- <label for="menu" id="nav-icon">&#9776;</label> -->
+        <div class="multi-level">
+            <div *ngFor="let portfolio of portfolios" class="item">
+                <i [ngClass]="{'fa fa-angle-down arrow': true, 'normal': portfolio.active === false, 'rotated': portfolio.active === true}"></i>
+                <!-- (click)="processClick(portfolio)" -->
+                <label (click)="togglePortfolio(portfolio)" for="{{portfolio.name}}"> <a href="ffghhj">
+                  <i class="fa fa-briefcase"
+                     title="View details"> </i></a>
+                  {{ portfolio.name}}</label>
+
+                <ul><div *ngIf="portfolio.active === true">
+                    <div *ngFor="let subportfolio of subportfolios[portfolio.name]" class="sub-item">
+                        <label title="{{ subportfolio.name}}"  (click)="toggleSubPortfolio(subportfolio)" for="{{subportfolio.name}}">
+                          <i [ngClass]="{'fa fa-angle-down arrow': true, 'normal': subportfolio.active === false, 'rotated': subportfolio.active === true}"></i>
+                          <a href="ffghhj"><i class="fa fa-diamond" title="View details"> </i></a>
+                          <script>
+                            $(document).ready(function(){
+                            $('[data-toggle="tooltip"]').tooltip();
+                            });
+                          </script>
+
+                          {{barSubportfolioName(subportfolio)}}</label>
+
+                        <div *ngIf="subportfolio.active === true">
+                        <ul *ngFor="let service of services[subportfolio.name]">
+                            <!-- (click)="//onServiceClick(service)" -->
+                            <li title="{{service.service_name}}" (click)="toggleService(service)"><a class="check_hover" >{{barServiceName(service)}}</a>
+                            <!--<div class="no-hover">Hi!!!</div> -->
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</body>
+
