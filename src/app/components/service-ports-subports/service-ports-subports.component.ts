@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {PrePortfolio} from '../../_models/pre-portfolio';
 import {Portfolio} from '../../_models/portfolio';
 import {PreSubPortfolio} from '../../_models/pre-sub';
@@ -36,7 +36,7 @@ export class ServicePortsSubportsComponent implements OnInit{
         });
     }
     else {
-      for (let sub of this.subportfolios[port.name]) {
+      for (const sub of this.subportfolios[port.name]) {
         sub.active = false;
       }
     }
@@ -80,7 +80,7 @@ export class ServicePortsSubportsComponent implements OnInit{
 
   initPortfolios(): void {
     this.pssService.getPortfolios().subscribe(ports => {
-      //console.log(ports);
+      // console.log(ports);
       this.portfolios = this.toPortfolios(ports[Object.keys(ports)[0]]);
   });
   }
@@ -118,12 +118,21 @@ export class ServicePortsSubportsComponent implements OnInit{
     document.querySelector('h3').style.cssText = 'top: ' + (200 + ((this.activeServices.length - this.activeServices.length % 13) * 50) / 13).toString() + 'px;';
     return h3;
   }
+  changeOpacity(id: string, state: number): void {
+    const icon = document.getElementById(id);
+    if (state === 0) {
+      icon.style.filter = 'brightness(90%)';
+    }
+    else {
+      icon.style.filter = 'brightness(75%)';
+    }
+  }
 
   toPortfolios(p_pr_ports: PrePortfolio[]): Portfolio [] {
-      let ports: Portfolio [] = [];
+      const ports: Portfolio [] = [];
       let port: Portfolio;
       for (const prePort of p_pr_ports) {
-        console.log(prePort['id']);
+        console.log(prePort.id);
         port = prePort;
         /*
         for (const key of Object.keys(prePort)) {
@@ -138,7 +147,7 @@ export class ServicePortsSubportsComponent implements OnInit{
   }
 
   toSubs(p_pr_subs: PreSubPortfolio[]): SubPortfolio [] {
-      let subs: SubPortfolio [] = [];
+      const subs: SubPortfolio [] = [];
       let sub: SubPortfolio;
       for (const preSub of p_pr_subs) {
         sub = preSub;
@@ -148,7 +157,7 @@ export class ServicePortsSubportsComponent implements OnInit{
       return subs;
   }
   toServices(p_pr_servs: PreService[]): Service [] {
-      let servs: Service [] = [];
+      const servs: Service [] = [];
       let serv: Service;
       console.log(Object.keys(Portfolio));
       for (const preServ of p_pr_servs) {

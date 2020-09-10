@@ -22,15 +22,16 @@
                 <i [ngClass]="{'fa fa-angle-down arrow': true, 'normal': portfolio.active === false, 'rotated': portfolio.active === true}"></i>
                 <!-- (click)="processClick(portfolio)" -->
                 <label (click)="togglePortfolio(portfolio)" for="{{portfolio.name}}"> <a href="ffghhj">
-                  <i class="fa fa-briefcase"
-                     title="View details"> </i></a>
+                  <i class="fa fa-briefcase" style="color: rgb({{portfolio.portfolioRed}}, {{portfolio.portfolioGreen}}, {{portfolio.portfolioBlue}}); filter: brightness(75%);"
+                     id = "{{portfolio.name}}" (mouseover)="changeOpacity(portfolio.name, 0)" (mouseleave)="changeOpacity(portfolio.name, 1)" title="View details"> </i></a>
                   {{ portfolio.name}}</label>
 
                 <ul><div *ngIf="portfolio.active === true">
                     <div *ngFor="let subportfolio of subportfolios[portfolio.name]" class="sub-item">
                         <label title="{{ subportfolio.name}}"  (click)="toggleSubPortfolio(subportfolio)" for="{{subportfolio.name}}">
                           <i [ngClass]="{'fa fa-angle-down arrow': true, 'normal': subportfolio.active === false, 'rotated': subportfolio.active === true}"></i>
-                          <a href="ffghhj"><i class="fa fa-diamond" title="View details"> </i></a>
+                          <a href="ffghhj"><i class="fa fa-diamond" style="color: rgb({{portfolio.sub_portfolioRed}}, {{portfolio.sub_portfolioGreen}}, {{portfolio.sub_portfolioBlue}}); filter: brightness(75%);"
+                          id = "{{subportfolio.name}}" (mouseover)="changeOpacity(subportfolio.name, 0)" (mouseleave)="changeOpacity(subportfolio.name, 1)" title="View details"> </i></a>
                           <script>
                             $(document).ready(function(){
                             $('[data-toggle="tooltip"]').tooltip();
