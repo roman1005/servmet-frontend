@@ -54,9 +54,11 @@ export class ServicePortsSubportsComponent implements OnInit{
   }
 
   toggleService(service: Service): void {
+    if (!service.active) {
+      this.activeServices.push(service);
+    }
     service.active = true;
     service.current = true;
-    this.activeServices.push(service);
     for (const serv of this.activeServices) {
       if (serv.active === true && serv !== service) {
         serv.current = false;
