@@ -9,10 +9,10 @@
 
     <div class="tab">
       <!-- let serv of null getServs() -->
-      <button title="{{serv.service_name}}" *ngFor="let serv of getServices()" class = 'tablinks' [ngStyle]="{'background-color': serv.current ? 'bisque' : null}" (click)="toggleService(serv)">{{tabServiceName(serv)}} <i class="fa fa-window-close" (click)="serv.active = false"></i></button>
+      <button title="{{serv.service_name}}" *ngFor="let serv of activeServices" class = 'tablinks' [ngStyle]="{'background-color': serv.current ? 'bisque' : null}" (click)="toggleService(serv)">{{tabServiceName(serv)}} <i class="fa fa-window-close" (click)="removeService(serv)"></i></button>
     </div>
 
-    <div *ngFor="let serv of getServices()" id="{{serv.service_name}}">
+    <div *ngFor="let serv of activeServices" id="{{serv.service_name}}">
         <h3 *ngIf="serv.current === true" [ngStyle]="this.details_class()"> {{serv.service_name}}</h3>
     </div>
     <div class="nav">

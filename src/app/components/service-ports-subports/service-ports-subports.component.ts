@@ -17,6 +17,7 @@ import {map} from 'rxjs/operators';
 export class ServicePortsSubportsComponent implements OnInit{
 
   portfolios: Portfolio[];
+  activeServices: Service[] = [];
   subportfolios: { [portfolioName: string]: SubPortfolio[] } = {};
   services: { [subPortfolioName: string]: Service []} = {};
   user: any;
@@ -55,12 +56,25 @@ export class ServicePortsSubportsComponent implements OnInit{
   toggleService(service: Service): void {
     service.active = true;
     service.current = true;
-    for (let serv of this.getServices()) {
+    this.activeServices.push(service);
+    for (const serv of this.activeServices) {
       if (serv.active === true && serv !== service) {
         serv.current = false;
       }
     }
   }
+
+  removeService(service: Service): void {
+    let ind = 0;
+    for (const serv of this.activeServices) {
+      if (serv === service) {
+        this.activeServices.splice(ind, 1);
+        break;
+      }
+      ind += 1;
+    }
+  }
+
 
   initPortfolios(): void {
     this.pssService.getPortfolios().subscribe(ports => {
@@ -96,35 +110,10 @@ export class ServicePortsSubportsComponent implements OnInit{
     }
   }
 
-  getServices(): Service[] {
-    const servs: Service[] = [];
-    for (const port of this.portfolios) {
-      try {
-        for (const subport of this.subportfolios[port.name]) {
-          if (this.services[subport.name] !== null) {
-            try {
-              for (const serv of this.services[subport.name]) {
-                if (serv.active === true) {
-                  servs.push(serv);
-                  console.log(serv);
-                }
-              }
-            } catch (e) {
-              continue;
-            }
-          }
-        }
-      } catch (e) {
-        continue;
-      }
-    }
-    return servs;
-  }
-
   details_class(): any {
     const h3 = document.querySelector('h3');
     // tslint:disable-next-line:max-line-length
-    document.querySelector('h3').style.cssText = 'top: ' + (200 + ((this.getServices().length - this.getServices().length % 13) * 50) / 13).toString() + 'px;';
+    document.querySelector('h3').style.cssText = 'top: ' + (200 + ((this.activeServices.length - this.activeServices.length % 13) * 50) / 13).toString() + 'px;';
     return h3;
   }
 
