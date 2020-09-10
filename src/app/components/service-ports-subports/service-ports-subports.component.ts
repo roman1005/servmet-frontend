@@ -30,8 +30,8 @@ export class ServicePortsSubportsComponent implements OnInit{
 
   togglePortfolio(port: Portfolio): void {
     if (!port.active) {
-      this.pssService.getSubPortfolios(port.name).subscribe((data) => {
-          this.subportfolios[port.name] = this.toSubs(data.subportfolios);
+      this.pssService.getSubPortfolios(port.name).subscribe((subports) => {
+          this.subportfolios[port.name] = this.toSubs(subports[Object.keys(subports)[0]]);
         });
     }
     else {
@@ -44,8 +44,8 @@ export class ServicePortsSubportsComponent implements OnInit{
 
   toggleSubPortfolio(subport: SubPortfolio): void {
     if (!subport.active) {
-      this.pssService.getServices(subport.name).subscribe((data) => {
-          this.services[subport.name] = this.toServices(data.services);
+      this.pssService.getServices(subport.name).subscribe((services) => {
+          this.services[subport.name] = this.toServices(services[Object.keys(services)[0]]);
         });
     }
 
@@ -55,7 +55,6 @@ export class ServicePortsSubportsComponent implements OnInit{
   toggleService(service: Service): void {
     service.active = true;
     service.current = true;
-    console.log(this.getServices());
     for (let serv of this.getServices()) {
       if (serv.active === true && serv !== service) {
         serv.current = false;
@@ -66,7 +65,7 @@ export class ServicePortsSubportsComponent implements OnInit{
   initPortfolios(): void {
     this.pssService.getPortfolios().subscribe(ports => {
       //console.log(ports);
-      this.portfolios = this.toPortfolios(ports.portfolios);
+      this.portfolios = this.toPortfolios(ports[Object.keys(ports)[0]]);
   });
   }
 
@@ -96,17 +95,6 @@ export class ServicePortsSubportsComponent implements OnInit{
       return service.service_name;
     }
   }
-  /*
-  updateSubPortfolios(portfolioName: string): void {
-    this.pssService.getSubPortfolios(portfolioName).subscribe(subports => {
-      console.log(subports);
-      this.subportfolios = subports;
-  });}
-
-  getServices(subPortfolioName: string): Observable<Service[]> {
-    return this.pssService.getServices(subPortfolioName);
-}
-*/
 
   getServices(): Service[] {
     const servs: Service[] = [];
