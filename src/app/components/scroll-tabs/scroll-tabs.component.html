@@ -1,0 +1,10 @@
+<div class="tab">
+      <!-- let serv of null getServs() -->
+      <button title="{{serv.service_name}}" *ngFor="let serv of actServ.activeServices let i=index" class = 'tablinks'
+              [ngStyle]="{'background-color': serv.current ? 'bisque' : null}"
+              (click)="actServ.toggleService(serv, i)">{{tabServiceName(serv)}} <i class="fa fa-window-close" (click)="actServ.removeService(serv)"></i></button>
+</div>
+<div *ngFor="let serv of actServ.activeServices" id="{{serv.service_name}}">
+        <h3 *ngIf="serv.current === true" > {{serv.service_name}}</h3>
+        <!--[ngStyle]="this.details_class()" -->
+</div>

@@ -13,6 +13,9 @@ export class AppComponent {
         private authenticationService: AuthenticationService
     ) {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+        if (!this.authenticationService.currentUserValue) {
+            this.router.navigate(['login']);
+        }
     }
 
     logout() {

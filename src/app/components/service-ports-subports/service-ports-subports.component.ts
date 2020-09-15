@@ -6,6 +6,7 @@ import {SubPortfolio} from '../../_models/subPortfolio';
 import {PreService} from '../../_models/pre-service';
 import {Service} from '../../_models/service';
 import {PssServiceService} from '../../_services/pss-service.service';
+import {ActiveServicesService} from '../../_services/activeServices.service';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -17,12 +18,11 @@ import {map} from 'rxjs/operators';
 export class ServicePortsSubportsComponent implements OnInit{
 
   portfolios: Portfolio[];
-  activeServices: Service[] = [];
   subportfolios: { [portfolioName: string]: SubPortfolio[] } = {};
   services: { [subPortfolioName: string]: Service []} = {};
   user: any;
 
-  constructor(private pssService: PssServiceService) {
+  constructor(private pssService: PssServiceService, public actServ: ActiveServicesService) {
   }
 
   ngOnInit() {
@@ -41,6 +41,7 @@ export class ServicePortsSubportsComponent implements OnInit{
       }
     }
     port.active = !port.active;
+
   }
 
   toggleSubPortfolio(subport: SubPortfolio): void {
@@ -52,31 +53,6 @@ export class ServicePortsSubportsComponent implements OnInit{
 
     subport.active = !subport.active;
   }
-
-  toggleService(service: Service): void {
-    if (!service.active) {
-      this.activeServices.push(service);
-    }
-    service.active = true;
-    service.current = true;
-    for (const serv of this.activeServices) {
-      if (serv.active === true && serv !== service) {
-        serv.current = false;
-      }
-    }
-  }
-
-  removeService(service: Service): void {
-    let ind = 0;
-    for (const serv of this.activeServices) {
-      if (serv === service) {
-        this.activeServices.splice(ind, 1);
-        break;
-      }
-      ind += 1;
-    }
-  }
-
 
   initPortfolios(): void {
     this.pssService.getPortfolios().subscribe(ports => {
@@ -111,13 +87,15 @@ export class ServicePortsSubportsComponent implements OnInit{
       return service.service_name;
     }
   }
-
+  /*
   details_class(): any {
     const h3 = document.querySelector('h3');
     // tslint:disable-next-line:max-line-length
     document.querySelector('h3').style.cssText = 'top: ' + (200 + ((this.activeServices.length - this.activeServices.length % 13) * 50) / 13).toString() + 'px;';
     return h3;
   }
+  */
+
   changeOpacity(id: string, state: number): void {
     const icon = document.getElementById(id);
     if (state === 0) {
@@ -159,7 +137,6 @@ export class ServicePortsSubportsComponent implements OnInit{
   toServices(p_pr_servs: PreService[]): Service [] {
       const servs: Service [] = [];
       let serv: Service;
-      console.log(Object.keys(Portfolio));
       for (const preServ of p_pr_servs) {
         serv = preServ;
         serv.active = false;

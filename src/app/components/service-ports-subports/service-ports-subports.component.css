@@ -49,6 +49,14 @@ label {
     position: absolute;
 }
 
+div.scroll
+{
+  height: calc(100vh - 200px);
+  overflow-y:scroll;
+  float: left;
+
+}
+
 #nav-icon {
     font-size: 28px;
     line-height: 50px;
@@ -130,10 +138,13 @@ label {
 
 h3{
   left: 450px;
-  top: 200px;
+  top: 50px;
   position: absolute;
 }
 
+.fa-window-close:hover{
+  color: #F44336;
+}
  /* Style the tab */
 .tab {
   overflow: hidden;

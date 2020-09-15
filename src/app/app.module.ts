@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { LoginComponent } from './components/login/login.component';
 import {ServicePortsSubportsComponent} from './components/service-ports-subports/service-ports-subports.component';
+import { ScrollTabsComponent } from './components/scroll-tabs/scroll-tabs.component';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import {ServicePortsSubportsComponent} from './components/service-ports-subports
     declarations: [
         AppComponent,
         ServicePortsSubportsComponent,
-        LoginComponent
+        LoginComponent,
+        ScrollTabsComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

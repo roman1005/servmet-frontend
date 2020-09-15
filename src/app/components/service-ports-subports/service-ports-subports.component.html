@@ -7,15 +7,9 @@
 
 <body>
 
-    <div class="tab">
-      <!-- let serv of null getServs() -->
-      <button title="{{serv.service_name}}" *ngFor="let serv of activeServices" class = 'tablinks' [ngStyle]="{'background-color': serv.current ? 'bisque' : null}" (click)="toggleService(serv)">{{tabServiceName(serv)}} <i class="fa fa-window-close" (click)="removeService(serv)"></i></button>
-    </div>
+    <scroll-tabs></scroll-tabs>
 
-    <div *ngFor="let serv of activeServices" id="{{serv.service_name}}">
-        <h3 *ngIf="serv.current === true" [ngStyle]="this.details_class()"> {{serv.service_name}}</h3>
-    </div>
-    <div class="nav">
+    <div class="nav scroll">
         <!-- <label for="menu" id="nav-icon">&#9776;</label> -->
         <div class="multi-level">
             <div *ngFor="let portfolio of portfolios" class="item">
@@ -43,7 +37,7 @@
                         <div *ngIf="subportfolio.active === true">
                         <ul *ngFor="let service of services[subportfolio.name]">
                             <!-- (click)="//onServiceClick(service)" -->
-                            <li title="{{service.service_name}}" (click)="toggleService(service)"><a class="check_hover" >{{barServiceName(service)}}</a>
+                            <li title="{{service.service_name}}" (click)="actServ.toggleService(service)"><a class="check_hover" >{{barServiceName(service)}}</a>
                             <!--<div class="no-hover">Hi!!!</div> -->
                             </li>
                         </ul>
