@@ -1,13 +1,12 @@
 <head>
     <link rel="stylesheet" type="text/css" href="service-ports-subports.component.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
 <body>
 
-    <scroll-tabs></scroll-tabs>
+    <app-scroll-tabs></app-scroll-tabs>
 
     <div class="nav scroll">
         <!-- <label for="menu" id="nav-icon">&#9776;</label> -->
@@ -24,7 +23,7 @@
                     <div *ngFor="let subportfolio of subportfolios[portfolio.name]" class="sub-item">
                         <label title="{{ subportfolio.name}}"  (click)="toggleSubPortfolio(subportfolio)" for="{{subportfolio.name}}">
                           <i [ngClass]="{'fa fa-angle-down arrow': true, 'normal': subportfolio.active === false, 'rotated': subportfolio.active === true}"></i>
-                          <a href="ffghhj"><i class="fa fa-diamond" style="color: rgb({{portfolio.sub_portfolioRed}}, {{portfolio.sub_portfolioGreen}}, {{portfolio.sub_portfolioBlue}}); filter: brightness(75%);"
+                          <a href="ffghhj"><i class="fa fa-diamond" style="color: rgb({{portfolio.sub_portfolioRed}}, {{portfolio.sub_portfolioGreen}}, {{portfolio.sub_portfolioBlue}}); filter: brightness(75%"
                           id = "{{subportfolio.name}}" (mouseover)="changeOpacity(subportfolio.name, 0)" (mouseleave)="changeOpacity(subportfolio.name, 1)" title="View details"> </i></a>
                           <script>
                             $(document).ready(function(){

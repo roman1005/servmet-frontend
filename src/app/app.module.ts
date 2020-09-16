@@ -5,18 +5,21 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { LoginComponent } from './components/login/login.component';
 import {ServicePortsSubportsComponent} from './components/service-ports-subports/service-ports-subports.component';
 import { ScrollTabsComponent } from './components/scroll-tabs/scroll-tabs.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
+        MatTabsModule,
+        BrowserAnimationsModule,
     ],
     declarations: [
         AppComponent,

@@ -1,7 +1,20 @@
-h3{
-  left: 450px;
-  top: 180px;
+h3 {
   position: absolute;
+  top: 200px;
+  left: 600px;
+  font-size: 30px;
+}
+
+.icon  {
+  position: absolute;
+  left: 5px;
+  top: 17px;
+}
+
+.fa-window-close {
+  position: absolute;
+  right: 3px;
+  top: 17px;
 }
 
 .fa-window-close:hover{
@@ -17,25 +30,44 @@ h3{
 }
 
 /* Style the buttons that are used to open the tab content */
-.tab button {
+.mat-tab-label
+{
+  width: 170px;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar{
+   background: #eeeafa;
+  height: 0px;
+}
+
+.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+    display: flex;
+    background-color: beige;
+}
+
+.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination:hover {
+    background-color: #dbdbb1;
+}
+
+button {
   cursor: pointer;
   height: 50px;
   width: 170px;
   background-color: lightblue;
   color: darkslategrey;
   float: left;
-  border: none;
-  outline: none;
-  padding: 14px 16px;
+  position: relative;
 }
 
+
+
 /* Change background color of buttons on hover */
-.tab button:hover {
+button:hover {
   background-color: lightcyan;
 }
 
 /* Create an active/current tablink class */
-.tab button.active {
+button.active {
   background-color: #ccc;
   display: block;
 }
