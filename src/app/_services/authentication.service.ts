@@ -19,6 +19,10 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
+    public setCurrentUserValue(user: User): void {
+      this.currentUserSubject.next(user);
+    }
+
     login(username: string, password: string) {
         return this.http.post<any>('http://127.0.0.1:8000/api-token-auth/', { username, password })
             .pipe(map(user => {

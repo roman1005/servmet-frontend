@@ -14,4 +14,7 @@ export interface Service {
     subportfolio?: string;
     customer?: string;
     owner?: string;
+    red?: number;
+    blue?: number;
+    green?: number;
 }

@@ -7,6 +7,11 @@
 <body>
 
     <app-scroll-tabs></app-scroll-tabs>
+    <!--
+    <div class="wrapper">
+        <iframe src = "http://localhost:3000/d/QWZC7A4Gk/new-dashboard-copy?orgId=1&from=1593001267644&to=1595475832966" width="650" height="300"></iframe>
+    </div>
+    -->
 
     <div class="nav scroll">
         <!-- <label for="menu" id="nav-icon">&#9776;</label> -->
@@ -21,7 +26,7 @@
 
                 <ul><div *ngIf="portfolio.active === true">
                     <div *ngFor="let subportfolio of subportfolios[portfolio.name]" class="sub-item">
-                        <label title="{{ subportfolio.name}}"  (click)="toggleSubPortfolio(subportfolio)" for="{{subportfolio.name}}">
+                        <label title="{{ subportfolio.name}}"  (click)="toggleSubPortfolio(subportfolio, portfolio)" for="{{subportfolio.name}}">
                           <i [ngClass]="{'fa fa-angle-down arrow': true, 'normal': subportfolio.active === false, 'rotated': subportfolio.active === true}"></i>
                           <a href="ffghhj"><i class="fa fa-diamond" style="color: rgb({{portfolio.sub_portfolioRed}}, {{portfolio.sub_portfolioGreen}}, {{portfolio.sub_portfolioBlue}}); filter: brightness(75%"
                           id = "{{subportfolio.name}}" (mouseover)="changeOpacity(subportfolio.name, 0)" (mouseleave)="changeOpacity(subportfolio.name, 1)" title="View details"> </i></a>
@@ -36,7 +41,15 @@
                         <div *ngIf="subportfolio.active === true">
                         <ul *ngFor="let service of services[subportfolio.name]">
                             <!-- (click)="//onServiceClick(service)" -->
-                            <li title="{{service.service_name}}" (click)="actServ.toggleService(service)"><a class="check_hover" >{{barServiceName(service)}}</a>
+
+                            <li title="{{service.service_name}}" (click)="actServ.toggleService(service)"><label class="check_hover" >
+                              <i class="fa fa-book" style="color: rgb({{portfolio.sub_portfolioRed}},
+                              {{portfolio.sub_portfolioGreen}}, {{portfolio.sub_portfolioBlue}});
+                                filter: brightness(75%); position: relative; left: 5px;" id = "{{service.service_name}}"
+                               (mouseover)="changeOpacity(service.service_name, 0)"
+                               (mouseleave)="changeOpacity(service.service_name, 1)" title="View details"></i>
+                              <span>&nbsp;</span>
+                              {{barServiceName(service)}}</label>
                             <!--<div class="no-hover">Hi!!!</div> -->
                             </li>
                         </ul>
