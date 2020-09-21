@@ -35,6 +35,10 @@ h3 {
   width: 170px;
 }
 
+.mat-tab-labels {
+  display: none;
+}
+
 .mat-tab-group.mat-primary .mat-ink-bar{
    background: #eeeafa;
   height: 0px;
@@ -47,6 +51,20 @@ h3 {
 
 .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination:hover {
     background-color: #dbdbb1;
+}
+
+.wrapper {
+  position: absolute;
+  top: 250px;
+  left: 600px;
+  height: 300px;
+  width: 700px;
+}
+
+.wrapper iframe{
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 button {

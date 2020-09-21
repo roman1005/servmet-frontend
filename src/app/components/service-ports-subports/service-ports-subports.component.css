@@ -86,13 +86,17 @@ div.scroll
   width: 400px;
 }
 
+.item ul .sub-item label.check_hover {
+  color: black;
+  background-color: lightcyan;
+}
+
 .item ul .sub-item .check_hover:hover
 {
-  color: #CFD8DC;
+  background-color: lightblue;
 }
-.item ul .sub-item ul li a{
+.item ul .sub-item ul li label{
   position: relative;
-  left: -100px;
 }
 .item ul .sub-item ul li:hover{
   cursor: pointer;

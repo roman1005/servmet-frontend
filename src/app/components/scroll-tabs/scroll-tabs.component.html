@@ -1,14 +1,18 @@
 <mat-tab-group style="position: absolute; top: 100px; left: 500px; width: 60%;">
     <mat-tab *ngFor="let tab of actServ.activeServices let i = index">
       <ng-template mat-tab-label>
-        <button (click)="toggleService(tab)" title = "{{tab.service_name}}" id="{{i.toString()}}">
-          <i class="fa fa-briefcase icon" ></i>
+        <button (click)="toggleService(tab)" title = "{{tab.service_name}}" id="{{i.toString()}}"
+                [ngClass]="{'chosen-tab': tab.current}">
+          <i class="fa fa-book icon"
+           style="color: rgb({{tab.red}}, {{tab.green}}, {{tab.blue}}); filter: brightness(75%)"></i>
           <span>{{tabName(tab.service_name)}}</span>
-          <i class="fa fa-window-close" (click)="removeService(tab)"></i>
+          <i class="fa fa-window-close" (click)="removeService(tab);"></i>
         </button>
     </ng-template>
     </mat-tab>
 </mat-tab-group>
+
+<ng-container *ngIf="elem">{{clickBut()}}</ng-container>
 
  <div *ngFor="let serv of actServ.activeServices" id="{{serv.service_name}}">
         <h3 *ngIf="serv.current === true"> {{serv.service_name}}</h3>

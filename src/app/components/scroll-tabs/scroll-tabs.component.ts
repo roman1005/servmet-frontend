@@ -1,6 +1,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import {ActiveServicesService} from '../../_services/activeServices.service';
 import {Service} from '../../_models/service';
+import {Portfolio} from '../../_models/portfolio';
+import {PortfoliosServiceService} from '../../_services/portfolios-service.servise';
 
 
 @Component({
@@ -11,7 +13,11 @@ import {Service} from '../../_models/service';
 })
 export class ScrollTabsComponent {
 
-  constructor(public actServ: ActiveServicesService) { }
+  elem: HTMLElement;
+  portfolios: Portfolio [];
+
+  constructor(public actServ: ActiveServicesService) {
+  }
 
   toggleService(service: Service): void {
     if (!service.active) {
@@ -34,15 +40,22 @@ export class ScrollTabsComponent {
         this.actServ.activeServices.splice(ind, 1);
         if (ind >= this.actServ.activeServices.length - 5)
         {
-          const elem = document.getElementsByClassName('mat-tab-header-pagination')[0] as HTMLElement;
-          elem.click();
+          this.elem = document.getElementsByClassName('mat-tab-header-pagination-after')[0] as HTMLElement;
         }
         break;
       }
       ind += 1;
     }
     service.active = false;
+  }
 
+  clickBut(): void {
+    setTimeout(() =>
+    {
+      this.elem.click();
+      this.elem = null;
+    },
+100);
   }
 
   tabName(name: string): string {
@@ -53,5 +66,6 @@ export class ScrollTabsComponent {
       return name;
     }
   }
+
 
 }

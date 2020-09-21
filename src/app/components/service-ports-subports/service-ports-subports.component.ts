@@ -7,6 +7,7 @@ import {PreService} from '../../_models/pre-service';
 import {Service} from '../../_models/service';
 import {PssServiceService} from '../../_services/pss-service.service';
 import {ActiveServicesService} from '../../_services/activeServices.service';
+import {PortfoliosServiceService} from '../../_services/portfolios-service.servise';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -44,10 +45,10 @@ export class ServicePortsSubportsComponent implements OnInit{
 
   }
 
-  toggleSubPortfolio(subport: SubPortfolio): void {
+  toggleSubPortfolio(subport: SubPortfolio, portfolio: Portfolio): void {
     if (!subport.active) {
       this.pssService.getServices(subport.name).subscribe((services) => {
-          this.services[subport.name] = this.toServices(services[Object.keys(services)[0]]);
+          this.services[subport.name] = this.toServices(services[Object.keys(services)[0]], portfolio);
         });
     }
 
@@ -134,13 +135,16 @@ export class ServicePortsSubportsComponent implements OnInit{
       }
       return subs;
   }
-  toServices(p_pr_servs: PreService[]): Service [] {
+  toServices(p_pr_servs: PreService[], portfolio: Portfolio): Service [] {
       const servs: Service [] = [];
       let serv: Service;
       for (const preServ of p_pr_servs) {
         serv = preServ;
         serv.active = false;
         serv.current = false;
+        serv.red = portfolio.portfolioRed;
+        serv.blue = portfolio.portfolioBlue;
+        serv.green = portfolio.portfolioGreen;
         servs.push(serv);
       }
       return servs;
