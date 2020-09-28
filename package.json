@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --ssl --ssl-cert C:\\\\Users\\Roman\\PycharmProjects\\servmet-frontend\\localhost1.crt --ssl-key C:\\\\Users\\Roman\\PycharmProjects\\servmet-frontend\\localhost1.key",
+    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
