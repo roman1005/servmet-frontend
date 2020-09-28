@@ -18,6 +18,11 @@
         <h3 *ngIf="serv.current === true"> {{serv.service_name}}</h3>
         <ng-container *ngIf="serv.refCard && serv.current">
           <div class="wrapper">
+            <iframe src = "{{serv.refCard}}" width="650" height="300"></iframe>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!serv.refCard && serv.current">
+          <div class="wrapper">
             <iframe src = "https://snapshot.raintank.io/dashboard-solo/snapshot/y7zwi2bZ7FcoTlB93WN7yWO4aMiz3pZb?from=1493369923321&to=1493377123321&panelId=4" width="650" height="300"></iframe>
           </div>
         </ng-container>
