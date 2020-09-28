@@ -7,6 +7,7 @@ import {PreService} from '../../_models/pre-service';
 import {Service} from '../../_models/service';
 import {PssServiceService} from '../../_services/pss-service.service';
 import {ActiveServicesService} from '../../_services/activeServices.service';
+import {PortfoliosServiceService} from '../../_services/portfolios-service.servise';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 

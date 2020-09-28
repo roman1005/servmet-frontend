@@ -39,7 +39,8 @@ export class ScrollTabsComponent {
         this.actServ.activeServices.splice(ind, 1);
         if (ind >= this.actServ.activeServices.length - 5)
         {
-          this.elem = document.getElementsByClassName('mat-tab-header-pagination-after')[0] as HTMLElement;
+          const elem = document.getElementsByClassName('mat-tab-header-pagination')[0] as HTMLElement;
+          elem.click();
         }
         break;
       }
@@ -65,6 +66,5 @@ export class ScrollTabsComponent {
       return name;
     }
   }
-
 
 }

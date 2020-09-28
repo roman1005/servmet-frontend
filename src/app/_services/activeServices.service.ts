@@ -8,7 +8,7 @@ export class ActiveServicesService {
     constructor() {
     }
 
-    toggleService(service: Service): void {
+    toggleService(service: Service, index): void {
     if (!service.active && this.activeServices.filter(serv => (serv.id === service.id)).length === 0) {
       this.activeServices.push(service);
     }
