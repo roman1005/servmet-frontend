@@ -11,6 +11,7 @@ export interface Service {
     alerts_on?: null;
     refCard?: string;
     architecture?: string;
+    dashboard_link?: string;
     subportfolio?: string;
     customer?: string;
     owner?: string;

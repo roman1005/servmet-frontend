@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import {ActiveServicesService} from '../../_services/activeServices.service';
 import {Service} from '../../_models/service';
 import {Portfolio} from '../../_models/portfolio';
-
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-scroll-tabs',
@@ -15,7 +15,7 @@ export class ScrollTabsComponent {
   elem: HTMLElement;
   portfolios: Portfolio [];
 
-  constructor(public actServ: ActiveServicesService) {
+  constructor(public actServ: ActiveServicesService, private sanitizer: DomSanitizer) {
   }
 
   toggleService(service: Service): void {
@@ -65,6 +65,10 @@ export class ScrollTabsComponent {
     else {
       return name;
     }
+  }
+
+  makeUrl(url: string): SafeResourceUrl {
+      return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
 }
